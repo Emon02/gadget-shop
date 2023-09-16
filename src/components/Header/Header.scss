@@ -7,6 +7,10 @@
   color: #e5ecf3;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 99;
+
+  @include md {
+    padding: 0 40px;
+  }
   .header-content {
     display: flex;
     justify-content: space-between;
@@ -14,15 +18,24 @@
     height: 50px;
     max-width: 1200px;
     margin: 0 auto;
+    @include md {
+      height: 70px;
+    }
     .left {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
+      @include md {
+        font-size: 34px;
+      }
     }
     .center {
       list-style-type: none;
-      display: flex;
+      display: none;
       gap: 25px;
+      @include md {
+        display: flex;
+      }
       li {
         font-size: 14px;
         font-weight: 600;
@@ -57,5 +70,20 @@
         }
       }
     }
+  }
+  &.sticky-header {
+    position: sticky;
+    top: 0;
+    transform: translateY(-70px);
+    animation: sticky-header 0.3s ease forwards;
+  }
+}
+
+@keyframes sticky-header {
+  0% {
+    transform: translateY(-70px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
